@@ -184,6 +184,10 @@
     <Compile Include="Migrations\201601151737195_z3.Designer.cs">
       <DependentUpon>201601151737195_z3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601152043447_z4.cs" />
+    <Compile Include="Migrations\201601152043447_z4.Designer.cs">
+      <DependentUpon>201601152043447_z4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
@@ -297,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601151737195_z3.resx">
       <DependentUpon>201601151737195_z3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601152043447_z4.resx">
+      <DependentUpon>201601152043447_z4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
