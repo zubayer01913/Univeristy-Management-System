@@ -1,0 +1,108 @@
+﻿@model UniversityManagementSystem.ViewModels.CourseAssignToTeacher
+@{
+    ViewBag.Title = "Assign";
+}
+
+<h2>Assign</h2>
+<hr />
+
+@using (Html.BeginForm())
+{  
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <p class="control-label col-md-2">Department</p>           
+            <div class="col-md-10">
+                @Html.DropDownList("Department", null, "Select Department", htmlAttributes: new { @class = "control-label col-md-2" , @id = "departmentId" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2">Teaher</p>
+            <div class="col-md-10">
+                <select id="teacherId">
+                    <option>Please Select a Value</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <p class="control-label col-md-2">Credit to be taken</p>
+            <div class="col-md-10">
+                <input type="text" id="abc" />
+            </div>            
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Credit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Credit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Credit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descriptio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descriptio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descriptio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartmentID, "DepartmentID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DepartmentID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SemesterID, "SemesterID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SemesterID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SemesterID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value=" Assign " class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    var teacher = [];
+    $('#departmentId').on("change onmouseover", function () {
+        var id = $('#departmentId').val();
+        console.log(id);
+        $.post("/CourseToTeacherAssign/GetTeacherList", { id: id }).success(function (data) {
+            teacher = data;
+            console.log(data);
+            $('#teacherId').empty().append(' <option value="">Please Select a value</option>');
+            data.forEach(function (obj)
+            {
+                $('#teacherId').append(' <option value="' + obj.value + '">' + obj.Text + '</option>');
+                //$("#selectbox").val(obj.value).attr('selected', true);
+            });
+
+
+        });
+    });
+
+    $('#teacherId').on("change ", function ()
+    {
+        $('#abc').val(teacher[$('#teacherId').val()].credit);
+    });
+</script>
+
