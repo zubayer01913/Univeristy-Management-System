@@ -14,7 +14,7 @@
         <div class="form-group">
             <p class="control-label col-md-2">Department</p>           
             <div class="col-md-10">
-                @Html.DropDownList("Department", null, "Select Department", htmlAttributes: new { @class = "control-label col-md-2" , @id = "departmentId" })
+                @Html.DropDownList("Department", null, "Select Department", htmlAttributes: new { @class = "control-label col-md-2" , id = "departmentId", })
             </div>
         </div>
 
@@ -29,9 +29,47 @@
         <div class="form-group">
             <p class="control-label col-md-2">Credit to be taken</p>
             <div class="col-md-10">
-                <input type="text" id="abc" />
+                <input type="text" id="creditTaken" />
             </div>            
         </div>
+        <div class="form-group">
+            <p class="control-label col-md-2">Couse Code</p>
+            <div class="col-md-10">
+                <select id="couseCode">
+                    <option>Please Select a Value</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <p class="control-label col-md-2">Course Name</p>
+            <div class="col-md-10">
+                <input type="text" id="courseName" />
+            </div>
+        </div>
+        <div class="form-group">
+            <p class="control-label col-md-2">Couse Credit</p>
+            <div class="col-md-10">
+                <input type="text" id="credit" />
+            </div>
+        </div>
+
+
+        @*<div class="form-group">
+            <p class="control-label col-md-2">Couse Name</p>
+            <div class="col-md-10">
+                <select id="couseName">
+                    <option>Please Select a Value</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <p class="control-label col-md-2">Couse Credit</p>
+            <div class="col-md-10">
+                <select id="credit">
+                    <option>Please Select a Value</option>
+                </select>
+            </div>
+        </div>*@
 
         @*<div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -82,7 +120,7 @@
 }
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script>
-    var teacher = [];
+    //var teacher = [];
     $('#departmentId').on("change onmouseover", function () {
         var id = $('#departmentId').val();
         console.log(id);
@@ -92,8 +130,13 @@
             $('#teacherId').empty().append(' <option value="">Please Select a value</option>');
             data.forEach(function (obj)
             {
-                $('#teacherId').append(' <option value="' + obj.value + '">' + obj.Text + '</option>');
+                //$('#teacherId').append(' <option value="' + obj.value + '">' + obj.Text + '</option>');
                 //$("#selectbox").val(obj.value).attr('selected', true);
+                $('#teacherId').append($('<option>', {
+                    value: obj.value,
+                    text: obj.Text,
+                    credit: obj.credit
+                }));
             });
 
 
@@ -102,7 +145,84 @@
 
     $('#teacherId').on("change ", function ()
     {
-        $('#abc').val(teacher[$('#teacherId').val()].credit);
+        $('#creditTaken').val(
+                                $('#teacherId option:selected').attr('credit')
+                             );
     });
+
+
+    $('#departmentId').on("change onmouseover", function () {
+        var id = $('#departmentId').val();
+        console.log(id);
+        $.post("/CourseToTeacherAssign/GetCouseCodeList", { id: id }).success(function (data) {
+            teacher = data;
+            console.log(data);
+            $('#couseCode').empty().append(' <option value="">Please Select a value</option>');
+            data.forEach(function (obj) {
+               // $('#couseCode').append(' <option value="' + obj.value + '">' + obj.Text + '</option>');
+                //$("#selectbox").val(obj.value).attr('selected', true);
+
+                $('#couseCode').append($('<option>', {
+                    value: obj.value,
+                    text: obj.Text,
+                    name: obj.Name,
+                    //credit: boj.creditNo
+                }));
+            });
+
+
+        });
+    });
+
+
+    $('#couseCode').on("change ", function () {
+        $('#courseName').val(
+                                $('#couseCode option:selected').attr('name')
+                             );
+    });
+
+
+
+
+
+    //$('#couseCode').on("change ", function () {
+    //    $('#credit').val(
+    //                            $('#couseCode option:selected').attr('credit')
+    //                         );
+    //});
+
+
+
+    //$('#couseCode').on("change onmouseover", function () {
+    //    var id = $('#couseCode').val();
+    //    console.log(id);
+    //    $.post("/CourseToTeacherAssign/GetCouseNameList", { id: id }).success(function (data) {
+    //        teacher = data;
+    //        console.log(data);
+    //        $('#couseName').empty().append(' <option value="">Please Select a value</option>');
+    //        data.forEach(function (obj) {
+    //            $('#couseName').append(' <option value="' + obj.value + '">' + obj.Text + '</option>');
+    //            //$("#selectbox").val(obj.value).attr('selected', true);
+    //        });
+
+
+    //    });
+    //});
+
+    //$('#couseName').on("change onmouseover", function () {
+    //    var id = $('#couseName').val();
+    //    console.log(id);
+    //    $.post("/CourseToTeacherAssign/GetCouseCreditList", { id: id }).success(function (data) {
+    //        teacher = data;
+    //        console.log(data);
+    //        $('#credit').empty().append(' <option value="">Please Select a value</option>');
+    //        data.forEach(function (obj) {
+    //            $('#credit').append(' <option value="' + obj.value + '">' + obj.Text + '</option>');
+    //            //$("#selectbox").val(obj.value).attr('selected', true);
+    //        });
+
+
+    //    });
+    //});
 </script>
 

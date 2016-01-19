@@ -15,7 +15,32 @@ namespace UniversityManagementSystem.Controllers
         // GET: CourseToTeacherAssign
         public ActionResult Index()
         {
-            return View();
+
+            List<CourseStatic> bids = new List<CourseStatic>();
+            var list = from b in db.Courses
+                       join a in db.Semesters on b.SemesterID equals a.Id
+                       select new
+                       {
+                           a.Id,
+                           b.CourseCode,
+                           b.Name,
+                           a.SemesterName,
+                          
+                       };
+            foreach (var v in list)
+            {
+                CourseStatic cour = new CourseStatic();
+                cour.Id = v.Id;
+                cour.CourseCode = v.CourseCode;
+                cour.Name = v.Name;
+                cour.SemesterName = v.SemesterName;
+
+                bids.Add(cour);
+
+            }
+            Console.WriteLine(bids.Count);
+
+            return View(bids);
         }
 
         // GET: CourseToTeacherAssign/Details/5
@@ -86,5 +111,26 @@ namespace UniversityManagementSystem.Controllers
 
             return Json(list);
         }
+
+        public ActionResult GetCouseCodeList(int id)
+        {
+            var list = db.Courses.Where(x => x.DepartmentID == id).Select(x => new { value = x.Id, Text = x.CourseCode,Name= x.Name,creditNo=x.Credit }).ToList();
+
+            return Json(list);
+        }
+
+        //public ActionResult GetCouseNameList(int id)
+        //{
+        //    var list = db.Courses.Where(x => x.Id == id).Select(x => new { value = x.Id, Text = x.Name }).ToList();
+
+        //    return Json(list);
+        //}
+
+        //public ActionResult GetCouseCreditList(int id)
+        //{
+        //    var list = db.Courses.Where(x => x.Id == id).Select(x => new { value = x.Id, Text = x.Credit }).ToList();
+
+        //    return Json(list);
+        //}
     }
 }
