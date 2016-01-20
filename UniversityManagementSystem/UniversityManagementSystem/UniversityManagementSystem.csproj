@@ -164,6 +164,7 @@
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RegisterStudentsController.cs" />
     <Compile Include="Controllers\SemestersController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -189,12 +190,21 @@
     <Compile Include="Migrations\201601152043447_z4.Designer.cs">
       <DependentUpon>201601152043447_z4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601201248469_z5.cs" />
+    <Compile Include="Migrations\201601201248469_z5.Designer.cs">
+      <DependentUpon>201601201248469_z5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601201310377_z6.cs" />
+    <Compile Include="Migrations\201601201310377_z6.Designer.cs">
+      <DependentUpon>201601201310377_z6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RegisterStudent.cs" />
     <Compile Include="Models\Semester.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\UniveristyContext.cs" />
@@ -285,6 +295,11 @@
     <Content Include="Views\CourseToTeacherAssign\Assign.cshtml" />
     <Content Include="Views\CourseToTeacherAssign\CourseView.cshtml" />
     <Content Include="Views\CourseToTeacherAssign\Index.cshtml" />
+    <Content Include="Views\RegisterStudents\Create.cshtml" />
+    <Content Include="Views\RegisterStudents\Delete.cshtml" />
+    <Content Include="Views\RegisterStudents\Details.cshtml" />
+    <Content Include="Views\RegisterStudents\Edit.cshtml" />
+    <Content Include="Views\RegisterStudents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -311,6 +326,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601152043447_z4.resx">
       <DependentUpon>201601152043447_z4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201248469_z5.resx">
+      <DependentUpon>201601201248469_z5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201310377_z6.resx">
+      <DependentUpon>201601201310377_z6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
