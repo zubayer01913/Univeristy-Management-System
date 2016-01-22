@@ -165,38 +165,16 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegisterStudentsController.cs" />
+    <Compile Include="Controllers\RoomNoAllocatsController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\SemestersController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601150944399_InitialCreate.cs" />
-    <Compile Include="Migrations\201601150944399_InitialCreate.Designer.cs">
-      <DependentUpon>201601150944399_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601151411593_z1.cs" />
-    <Compile Include="Migrations\201601151411593_z1.Designer.cs">
-      <DependentUpon>201601151411593_z1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601151447095_z2.cs" />
-    <Compile Include="Migrations\201601151447095_z2.Designer.cs">
-      <DependentUpon>201601151447095_z2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601151737195_z3.cs" />
-    <Compile Include="Migrations\201601151737195_z3.Designer.cs">
-      <DependentUpon>201601151737195_z3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601152043447_z4.cs" />
-    <Compile Include="Migrations\201601152043447_z4.Designer.cs">
-      <DependentUpon>201601152043447_z4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601201248469_z5.cs" />
-    <Compile Include="Migrations\201601201248469_z5.Designer.cs">
-      <DependentUpon>201601201248469_z5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601201310377_z6.cs" />
-    <Compile Include="Migrations\201601201310377_z6.Designer.cs">
-      <DependentUpon>201601201310377_z6.cs</DependentUpon>
+    <Compile Include="Migrations\201601211012319_z1.cs" />
+    <Compile Include="Migrations\201601211012319_z1.Designer.cs">
+      <DependentUpon>201601211012319_z1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -205,6 +183,8 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RegisterStudent.cs" />
+    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\RoomNoAllocat.cs" />
     <Compile Include="Models\Semester.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\UniveristyContext.cs" />
@@ -212,14 +192,18 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CourseAssignToTeacher.cs" />
     <Compile Include="ViewModels\CourseStatic.cs" />
+    <Compile Include="ViewModels\SeheduleRoom.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery.timepicker.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -227,6 +211,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.timepicker.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -234,6 +219,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\site.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -300,6 +286,16 @@
     <Content Include="Views\RegisterStudents\Details.cshtml" />
     <Content Include="Views\RegisterStudents\Edit.cshtml" />
     <Content Include="Views\RegisterStudents\Index.cshtml" />
+    <Content Include="Views\Rooms\Create.cshtml" />
+    <Content Include="Views\Rooms\Delete.cshtml" />
+    <Content Include="Views\Rooms\Details.cshtml" />
+    <Content Include="Views\Rooms\Edit.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
+    <Content Include="Views\RoomNoAllocats\Create.cshtml" />
+    <Content Include="Views\RoomNoAllocats\Delete.cshtml" />
+    <Content Include="Views\RoomNoAllocats\Details.cshtml" />
+    <Content Include="Views\RoomNoAllocats\Edit.cshtml" />
+    <Content Include="Views\RoomNoAllocats\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -312,26 +308,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601150944399_InitialCreate.resx">
-      <DependentUpon>201601150944399_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601151411593_z1.resx">
-      <DependentUpon>201601151411593_z1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601151447095_z2.resx">
-      <DependentUpon>201601151447095_z2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601151737195_z3.resx">
-      <DependentUpon>201601151737195_z3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601152043447_z4.resx">
-      <DependentUpon>201601152043447_z4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601201248469_z5.resx">
-      <DependentUpon>201601201248469_z5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601201310377_z6.resx">
-      <DependentUpon>201601201310377_z6.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601211012319_z1.resx">
+      <DependentUpon>201601211012319_z1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

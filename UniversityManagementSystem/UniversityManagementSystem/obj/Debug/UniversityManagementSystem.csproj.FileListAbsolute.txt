@@ -110,14 +110,8 @@ C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagemen
 C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.InitialCreate.resources
-C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z1.resources
-C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z2.resources
-C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z3.resources
-C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.csproj.GenerateResource.Cache
 C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.dll
 C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.pdb
-C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z4.resources
 C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.csprojResolveAssemblyReference.cache
-C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z5.resources
-C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z6.resources
+C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z1.resources
+C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.csproj.GenerateResource.Cache

@@ -114,10 +114,18 @@ namespace UniversityManagementSystem.Controllers
 
         public ActionResult GetCouseCodeList(int id)
         {
-            var list = db.Courses.Where(x => x.DepartmentID == id).Select(x => new { value = x.Id, Text = x.CourseCode,Name= x.Name,creditNo=x.Credit }).ToList();
+            var list = db.Courses.Where(x => x.DepartmentID == id).Select(x => new { value = x.Id, Text = x.CourseCode,Name= x.Name }).ToList();
 
             return Json(list);
         }
+
+        public ActionResult GetCourseCreditList(int id)
+        {
+            var list = db.Courses.Where(x => x.DepartmentID == id).Select(x => new { value = x.Id, Text = x.CourseCode, creditNo = x.Credit }).ToList();
+
+            return Json(list);
+        }
+
 
         //public ActionResult GetCouseNameList(int id)
         //{
@@ -132,5 +140,13 @@ namespace UniversityManagementSystem.Controllers
 
         //    return Json(list);
         //}
+
+
+
+
+        public ActionResult Sehedule()
+        {
+
+        }
     }
 }

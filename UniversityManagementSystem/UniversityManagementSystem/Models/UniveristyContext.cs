@@ -13,8 +13,11 @@ namespace UniversityManagementSystem.Models
         public DbSet<Semester> Semesters { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<RegisterStudent> RegisterStudents { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<RoomNoAllocat> RoomNoAllocates { get; set; }
 
         public System.Data.Entity.DbSet<UniversityManagementSystem.ViewModels.CourseAssignToTeacher> CourseAssignToTeachers { get; set; }
+
     }
     
 }

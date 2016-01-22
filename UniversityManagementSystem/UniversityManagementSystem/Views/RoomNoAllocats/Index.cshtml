@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UniversityManagementSystem.Models.Course>
+﻿@model IEnumerable<UniversityManagementSystem.Models.RoomNoAllocat>
 
 @{
     ViewBag.Title = "Index";
@@ -15,19 +15,19 @@
             @Html.DisplayNameFor(model => model.Department.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Semester.SemesterName)
+            @Html.DisplayNameFor(model => model.Room.RoomNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CourseCode)
+            @Html.DisplayNameFor(model => model.CourseName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.DateOfSaven)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Credit)
+            @Html.DisplayNameFor(model => model.Start)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descriptio)
+            @Html.DisplayNameFor(model => model.End)
         </th>
         <th></th>
     </tr>
@@ -38,19 +38,19 @@
             @Html.DisplayFor(modelItem => item.Department.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Semester.SemesterName)
+            @Html.DisplayFor(modelItem => item.Room.RoomNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CourseCode)
+            @Html.DisplayFor(modelItem => item.CourseName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.DateOfSaven)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Credit)
+            @Html.DisplayFor(modelItem => item.Start)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Descriptio)
+            @Html.DisplayFor(modelItem => item.End)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

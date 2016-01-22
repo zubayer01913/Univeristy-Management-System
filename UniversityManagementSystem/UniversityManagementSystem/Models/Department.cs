@@ -22,5 +22,7 @@ namespace UniversityManagementSystem.Models
         public virtual ICollection<Teacher> Teachers { get; set; }
 
         public virtual ICollection<RegisterStudent> RegStudent { get; set; }
+
+        public virtual ICollection<RoomNoAllocat> RoomAllocates { get; set; }
     }
 }

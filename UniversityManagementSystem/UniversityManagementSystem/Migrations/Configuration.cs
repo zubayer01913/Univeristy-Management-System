@@ -5,15 +5,14 @@ namespace UniversityManagementSystem.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<UniversityManagementSystem.Models.UniveristyContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<UniversityManagementSystem.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "UniversityManagementSystem.Models.UniveristyContext";
         }
 
-        protected override void Seed(UniversityManagementSystem.Models.UniveristyContext context)
+        protected override void Seed(UniversityManagementSystem.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

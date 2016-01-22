@@ -10,112 +10,107 @@ using UniversityManagementSystem.Models;
 
 namespace UniversityManagementSystem.Controllers
 {
-    public class RegisterStudentsController : Controller
+    public class RoomsController : Controller
     {
         private UniveristyContext db = new UniveristyContext();
 
-        // GET: RegisterStudents
+        // GET: Rooms
         public ActionResult Index()
         {
-            var registerStudents = db.RegisterStudents.Include(r => r.Department);
-            return View(registerStudents.ToList());
+            return View(db.Rooms.ToList());
         }
 
-        // GET: RegisterStudents/Details/5
+        // GET: Rooms/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RegisterStudent registerStudent = db.RegisterStudents.Find(id);
-            if (registerStudent == null)
+            Room room = db.Rooms.Find(id);
+            if (room == null)
             {
                 return HttpNotFound();
             }
-            return View(registerStudent);
+            return View(room);
         }
 
-        // GET: RegisterStudents/Create
+        // GET: Rooms/Create
         public ActionResult Create()
         {
-            ViewBag.DepartmentID = new SelectList(db.Depatments, "Id", "Name");
             return View();
         }
 
-        // POST: RegisterStudents/Create
+        // POST: Rooms/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,StudentName,StudentEmail,ContactNumber,CurrentDate,StudentAddress,DepartmentID")] RegisterStudent registerStudent)
+        public ActionResult Create([Bind(Include = "Id,RoomNumber")] Room room)
         {
             if (ModelState.IsValid)
             {
-                db.RegisterStudents.Add(registerStudent);
+                db.Rooms.Add(room);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DepartmentID = new SelectList(db.Depatments, "Id", "Name", registerStudent.DepartmentID);
-            return View(registerStudent);
+            return View(room);
         }
 
-        // GET: RegisterStudents/Edit/5
+        // GET: Rooms/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RegisterStudent registerStudent = db.RegisterStudents.Find(id);
-            if (registerStudent == null)
+            Room room = db.Rooms.Find(id);
+            if (room == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DepartmentID = new SelectList(db.Depatments, "Id", "Code", registerStudent.DepartmentID);
-            return View(registerStudent);
+            return View(room);
         }
 
-        // POST: RegisterStudents/Edit/5
+        // POST: Rooms/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,StudentName,StudentEmail,ContactNumber,CurrentDate,StudentAddress,DepartmentID")] RegisterStudent registerStudent)
+        public ActionResult Edit([Bind(Include = "Id,RoomNumber")] Room room)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(registerStudent).State = EntityState.Modified;
+                db.Entry(room).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DepartmentID = new SelectList(db.Depatments, "Id", "Code", registerStudent.DepartmentID);
-            return View(registerStudent);
+            return View(room);
         }
 
-        // GET: RegisterStudents/Delete/5
+        // GET: Rooms/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RegisterStudent registerStudent = db.RegisterStudents.Find(id);
-            if (registerStudent == null)
+            Room room = db.Rooms.Find(id);
+            if (room == null)
             {
                 return HttpNotFound();
             }
-            return View(registerStudent);
+            return View(room);
         }
 
-        // POST: RegisterStudents/Delete/5
+        // POST: Rooms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            RegisterStudent registerStudent = db.RegisterStudents.Find(id);
-            db.RegisterStudents.Remove(registerStudent);
+            Room room = db.Rooms.Find(id);
+            db.Rooms.Remove(room);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
