@@ -95,8 +95,10 @@
                 //$("#selectbox").val(obj.value).attr('selected', true);
 
                 $('#couseCode').append($('<option>', {
-                    value: obj.value,
-                    text: obj.Text,
+                  
+                    text: obj.Name,
+                    value: obj.Text,
+                    //value: obj.value,
                     //credit: boj.creditNo
                 }));
             });

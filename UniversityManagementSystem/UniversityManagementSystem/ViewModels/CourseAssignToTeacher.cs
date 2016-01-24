@@ -13,6 +13,8 @@ namespace UniversityManagementSystem.ViewModels
         public double CreditCanBeTaken { get; set; }
         public double RemainingCredit { get; set; }
         public int CourseId { get; set; }
+        public string cod { get; set; }
+
         
     }
 }

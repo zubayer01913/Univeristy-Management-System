@@ -8,6 +8,35 @@ namespace UniversityManagementSystem.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.CourseAssignTeachers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        DepartmentName = c.String(),
+                        TeacherName = c.String(),
+                        CreditToTaken = c.String(),
+                        RemainingCredit = c.String(),
+                        CouseCode = c.String(),
+                        CourseName = c.String(),
+                        CourseCredit = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.CourseAssignToTeachers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        DepatmentId = c.Int(nullable: false),
+                        TeacherId = c.Int(nullable: false),
+                        CreditCanBeTaken = c.Double(nullable: false),
+                        RemainingCredit = c.Double(nullable: false),
+                        CourseId = c.Int(nullable: false),
+                        cod = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Courses",
                 c => new
                     {
@@ -46,6 +75,7 @@ namespace UniversityManagementSystem.Migrations
                         CurrentDate = c.DateTime(nullable: false),
                         StudentAddress = c.String(),
                         DepartmentID = c.Int(nullable: false),
+                        RegistrotionNo = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Departments", t => t.DepartmentID, cascadeDelete: true)
@@ -104,104 +134,51 @@ namespace UniversityManagementSystem.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.AspNetRoles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
-            
-            CreateTable(
-                "dbo.AspNetUsers",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Email = c.String(maxLength: 256),
-                        EmailConfirmed = c.Boolean(nullable: false),
-                        PasswordHash = c.String(),
-                        SecurityStamp = c.String(),
-                        PhoneNumber = c.String(),
-                        PhoneNumberConfirmed = c.Boolean(nullable: false),
-                        TwoFactorEnabled = c.Boolean(nullable: false),
-                        LockoutEndDateUtc = c.DateTime(),
-                        LockoutEnabled = c.Boolean(nullable: false),
-                        AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(nullable: false, maxLength: 256),
-                    })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserClaims",
+                "dbo.EnrollCourses",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        ClaimType = c.String(),
-                        ClaimValue = c.String(),
+                        RegisterNumber = c.String(),
+                        StudentName = c.String(),
+                        StudentEmail = c.String(),
+                        Department = c.String(),
+                        SelectCourse = c.String(),
+                        EnrollDate = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.AspNetUserLogins",
+                "dbo.StudentResults",
                 c => new
                     {
-                        LoginProvider = c.String(nullable: false, maxLength: 128),
-                        ProviderKey = c.String(nullable: false, maxLength: 128),
-                        UserId = c.String(nullable: false, maxLength: 128),
+                        Id = c.Int(nullable: false, identity: true),
+                        StudentReg = c.String(),
+                        StudentName = c.String(),
+                        StudentEmail = c.String(),
+                        DepartmentName = c.String(),
+                        SelectCourse = c.String(),
+                        SelectGradLetter = c.String(),
                     })
-                .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
+                .PrimaryKey(t => t.Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Courses", "SemesterID", "dbo.Semesters");
             DropForeignKey("dbo.Teachers", "DepartmentId", "dbo.Departments");
             DropForeignKey("dbo.RoomNoAllocats", "RoomId", "dbo.Rooms");
             DropForeignKey("dbo.RoomNoAllocats", "DepartmentID", "dbo.Departments");
             DropForeignKey("dbo.RegisterStudents", "DepartmentID", "dbo.Departments");
             DropForeignKey("dbo.Courses", "DepartmentID", "dbo.Departments");
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Teachers", new[] { "DepartmentId" });
             DropIndex("dbo.RoomNoAllocats", new[] { "RoomId" });
             DropIndex("dbo.RoomNoAllocats", new[] { "DepartmentID" });
             DropIndex("dbo.RegisterStudents", new[] { "DepartmentID" });
             DropIndex("dbo.Courses", new[] { "SemesterID" });
             DropIndex("dbo.Courses", new[] { "DepartmentID" });
-            DropTable("dbo.AspNetUserLogins");
-            DropTable("dbo.AspNetUserClaims");
-            DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
+            DropTable("dbo.StudentResults");
+            DropTable("dbo.EnrollCourses");
             DropTable("dbo.Semesters");
             DropTable("dbo.Teachers");
             DropTable("dbo.Rooms");
@@ -209,6 +186,8 @@ namespace UniversityManagementSystem.Migrations
             DropTable("dbo.RegisterStudents");
             DropTable("dbo.Departments");
             DropTable("dbo.Courses");
+            DropTable("dbo.CourseAssignToTeachers");
+            DropTable("dbo.CourseAssignTeachers");
         }
     }
 }

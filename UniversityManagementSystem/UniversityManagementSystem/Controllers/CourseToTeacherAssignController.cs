@@ -16,7 +16,7 @@ namespace UniversityManagementSystem.Controllers
         public ActionResult Index()
         {
 
-            List<CourseStatic> bids = new List<CourseStatic>();
+            List<CourseStatic> courseStatic = new List<CourseStatic>();
             var list = from b in db.Courses
                        join a in db.Semesters on b.SemesterID equals a.Id
                        select new
@@ -25,7 +25,7 @@ namespace UniversityManagementSystem.Controllers
                            b.CourseCode,
                            b.Name,
                            a.SemesterName,
-                          
+
                        };
             foreach (var v in list)
             {
@@ -35,12 +35,12 @@ namespace UniversityManagementSystem.Controllers
                 cour.Name = v.Name;
                 cour.SemesterName = v.SemesterName;
 
-                bids.Add(cour);
+                courseStatic.Add(cour);
 
             }
-            Console.WriteLine(bids.Count);
+            //Console.WriteLine(ids.Count);
 
-            return View(bids);
+            return View(courseStatic);
         }
 
         // GET: CourseToTeacherAssign/Details/5
@@ -54,10 +54,53 @@ namespace UniversityManagementSystem.Controllers
         {
             ViewBag.Department = new SelectList(db.Depatments, "Id", "Name");
 
- 
+
 
             return View();
         }
+
+
+        //public ActionResult Create()
+        //{
+        //    ViewBag.DepartmentID = new SelectList(db.Depatments, "Id", "Name");
+        //    ViewBag.TeacherID = new SelectList(db.Teachers, "Id", "TeacherName");
+        //    ViewBag.TeacherCredit = new SelectList(db.Teachers, "Id", "CreditToBeTaken");
+        //    ViewBag.CourseID = new SelectList(db.Courses, "Id", "CourseCode");
+        //    ViewBag.CourseName = new SelectList(db.Courses, "Id", "Name");
+        //    ViewBag.CourseCredit = new SelectList(db.Courses, "Id", "Credit");
+        //    return View();
+        //}
+
+        //// POST: Courses/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        [HttpPost]
+        public ActionResult Create(CourseAssignTeacher model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                db.CourseAssigns.Add(model);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+           
+
+            //ViewBag.DepartmentID = new SelectList(db.Depatments, "Id", "Name", assign.DepatmentName);
+            //ViewBag.TeacherID = new SelectList(db.Teachers, "Id", "TeacherName", assign.TeacherName);
+            //ViewBag.TeacherCredit = new SelectList(db.Teachers, "Id", "CreditToBeTaken", assign.CreditCanTaken);
+            //ViewBag.CourseID = new SelectList(db.Courses, "Id", "CourseCode", assign.CourseCode);
+            //ViewBag.CourseName = new SelectList(db.Courses, "Id", "Name", assign.CourseName);
+            //ViewBag.CourseCredit = new SelectList(db.Courses, "Id", "Credit", assign.CourseCredit);
+            //return View();
+        }
+
+
+
+
 
         // POST: CourseToTeacherAssign/Create
         [HttpPost]
@@ -107,45 +150,53 @@ namespace UniversityManagementSystem.Controllers
         [HttpPost]
         public ActionResult GetTeacherList(int id)
         {
-            var list = db.Teachers.Where(x => x.DepartmentId == id).Select(x => new { value= x.Id, Text= x.TeacherName,credit= x.CreditToBeTaken}).ToList();         
+            var list = db.Teachers.Where(x => x.DepartmentId == id).Select(x => new { value = x.Id, Text = x.TeacherName, credit = x.CreditToBeTaken }).ToList();
 
             return Json(list);
         }
 
         public ActionResult GetCouseCodeList(int id)
         {
-            var list = db.Courses.Where(x => x.DepartmentID == id).Select(x => new { value = x.Id, Text = x.CourseCode,Name= x.Name }).ToList();
+            var list = db.Courses.Where(x => x.DepartmentID == id).Select(x => new { x.Id,x.CourseCode, x.Name, x.Credit }).ToList();
 
             return Json(list);
         }
 
-        public ActionResult GetCourseCreditList(int id)
-        {
-            var list = db.Courses.Where(x => x.DepartmentID == id).Select(x => new { value = x.Id, Text = x.CourseCode, creditNo = x.Credit }).ToList();
-
-            return Json(list);
-        }
-
-
-        //public ActionResult GetCouseNameList(int id)
-        //{
-        //    var list = db.Courses.Where(x => x.Id == id).Select(x => new { value = x.Id, Text = x.Name }).ToList();
-
-        //    return Json(list);
-        //}
-
-        //public ActionResult GetCouseCreditList(int id)
-        //{
-        //    var list = db.Courses.Where(x => x.Id == id).Select(x => new { value = x.Id, Text = x.Credit }).ToList();
-
-        //    return Json(list);
-        //}
+  
 
 
 
 
         public ActionResult Sehedule()
         {
+            List<SeheduleRoom> sehedules = new List<SeheduleRoom>();
+            var list = from d in db.Courses
+                       join a in db.RoomNoAllocates on d.Id equals a.Id
+
+                       select new
+                       {
+                           d.Id,
+                           d.CourseCode,
+                           d.Name,
+                           a.Room,
+                           a.CourseName,
+                           a.Start,
+                           a.End,
+                       };
+            foreach (var v in list)
+            {
+                SeheduleRoom sedule = new SeheduleRoom();
+                sedule.Id = v.Id;
+                sedule.CourseCode = v.CourseCode;
+                sedule.Name = v.Name;
+                //sedule.Room = v.Room;
+                sedule.Start = v.Start;
+                sedule.End = v.End;
+
+                sehedules.Add(sedule);
+            }
+
+            return View(sehedules);
 
         }
     }

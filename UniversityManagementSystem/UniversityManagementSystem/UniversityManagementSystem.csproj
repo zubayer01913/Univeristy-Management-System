@@ -172,20 +172,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601211012319_z1.cs" />
-    <Compile Include="Migrations\201601211012319_z1.Designer.cs">
-      <DependentUpon>201601211012319_z1.cs</DependentUpon>
+    <Compile Include="Migrations\201601231909306_z1.cs" />
+    <Compile Include="Migrations\201601231909306_z1.Designer.cs">
+      <DependentUpon>201601231909306_z1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\CourseAssignTeacher.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\EnrollCourse.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ListOfNumberNo.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RegisterStudent.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\RoomNoAllocat.cs" />
     <Compile Include="Models\Semester.cs" />
+    <Compile Include="Models\StudentResult.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\UniveristyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +197,7 @@
     <Compile Include="ViewModels\CourseAssignToTeacher.cs" />
     <Compile Include="ViewModels\CourseStatic.cs" />
     <Compile Include="ViewModels\SeheduleRoom.cs" />
+    <Compile Include="ViewModels\ViewResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datepicker.css" />
@@ -296,6 +301,7 @@
     <Content Include="Views\RoomNoAllocats\Details.cshtml" />
     <Content Include="Views\RoomNoAllocats\Edit.cshtml" />
     <Content Include="Views\RoomNoAllocats\Index.cshtml" />
+    <Content Include="Views\CourseToTeacherAssign\Sehedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -308,8 +314,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601211012319_z1.resx">
-      <DependentUpon>201601211012319_z1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601231909306_z1.resx">
+      <DependentUpon>201601231909306_z1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
