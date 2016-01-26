@@ -9,13 +9,18 @@ namespace UniversityManagementSystem.Models
     public class Course
     {
         public int Id { get; set; }
+
+        //[Required(ErrorMessage = "Place Name is required and at least five(5)")]
+        //[StringLength(maximumLength: 5, MinimumLength = 7)]
         public string CourseCode { get; set; }
 
+        //[Required(ErrorMessage = "Place Name is required")]
+        //[StringLength(maximumLength: 2, MinimumLength = 50)]
         public String Name { get; set; }
         
         //[Required]
-        //[RegularExpression(@"^[0-9]{.5,5}$", ErrorMessage = "PhoneNumber should contain only numbers")]
-
+        ////[RegularExpression(@"^[0-9]{.5,5}", ErrorMessage = "Number should contain only numbers")]
+        //[Range(.5, 5)]
         public float Credit { get; set; }
         public string Descriptio { get; set; }
 

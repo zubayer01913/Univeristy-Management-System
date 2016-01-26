@@ -8,12 +8,13 @@ namespace UniversityManagementSystem.ViewModels
     public class CourseAssignToTeacher
     {
         public int Id { get; set; }
-        public int DepatmentId { get; set; }
-        public int TeacherId { get; set; }
-        public double CreditCanBeTaken { get; set; }
-        public double RemainingCredit { get; set; }
-        public int CourseId { get; set; }
-        public string cod { get; set; }
+        public string DepartmentName { get; set; }
+        public string TeacherName { get; set; }
+        public string CreditToTaken { get; set; }
+        public string RemainingCredit { get; set; }
+        public string CouseCode { get; set; }
+        public string CourseName { get; set; }
+        public string CourseCredit { get; set; }
 
         
     }

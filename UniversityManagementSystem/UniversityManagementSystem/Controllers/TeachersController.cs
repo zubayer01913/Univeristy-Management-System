@@ -51,7 +51,7 @@ namespace UniversityManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TeacherName,Address,ContactNO,Designation,DepartmentId,CreditToBeTaken")] Teacher teacher)
+        public ActionResult Create([Bind(Include = "Id,TeacherName,Address,TeacherEmail,ContactNO,Designation,DepartmentId,CreditToBeTaken")] Teacher teacher)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace UniversityManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TeacherName,Address,ContactNO,Designation,DepartmentId,CreditToBeTaken")] Teacher teacher)
+        public ActionResult Edit([Bind(Include = "Id,TeacherName,Address,TeacherEmail,ContactNO,Designation,DepartmentId,CreditToBeTaken")] Teacher teacher)
         {
             if (ModelState.IsValid)
             {

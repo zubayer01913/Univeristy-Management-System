@@ -128,3 +128,43 @@
 
 </script>
 
+
+
+
+    @*function model(id_var, departmentName_var, teacherName_var, creditToTaken_var, remainingCredit_var, couseCode_var, courseName_var, courseCredit_var)
+    {
+        return {
+            id: id_var,
+            departmentName: departmentName_var,
+            teacherName: teacherName_var,
+            creditToTaken: creditToTaken_var,
+            remainingCredit: creditToTaken_var-courseCredit_var,
+            couseCode: couseCode_var,
+            courseName: courseName_var,
+            courseCredit: courseCredit_var
+                };
+
+    }
+
+    function sendfromdata() {
+        var model = model(0, $('#departmentId').val(), $('#teacherId').val(), $('#creditTaken').val(),remainingCredit,$('#couseCode').val(),$('#courseName').val(), $('#courseCredit').val());
+        //    {
+        //    id: 0,
+        //    departmentName: $('#departmentId').val(),
+        //    teacherName: $('#teacherId').val(),
+        //    creditToTaken: $('#creditTaken').val(),
+        //        courseCredit: $('#courseCredit').val(),
+        //    remainingCredit: this.creditToTaken - this.courseCredit,
+        //    //function (test) {
+        //    //    return this.creditToTaken - this.courseCredit;
+        //    //},
+        //    couseCode: $('#couseCode').val(),
+        //    courseName: $('#courseName').val()
+
+        //};
+
+        $.post("/CourseToTeacherAssign/Create", model).then(function () {
+
+        });
+    }*@
+

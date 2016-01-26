@@ -39,6 +39,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -106,12 +114,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -178,10 +180,21 @@
     <Compile Include="Migrations\201601231909306_z1.Designer.cs">
       <DependentUpon>201601231909306_z1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601261401189_z2.cs" />
+    <Compile Include="Migrations\201601261401189_z2.Designer.cs">
+      <DependentUpon>201601261401189_z2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601261633575_z3.cs" />
+    <Compile Include="Migrations\201601261633575_z3.Designer.cs">
+      <DependentUpon>201601261633575_z3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601261938204_z4.cs" />
+    <Compile Include="Migrations\201601261938204_z4.Designer.cs">
+      <DependentUpon>201601261938204_z4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\CourseAssignTeacher.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\EnrollCourse.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -194,6 +207,7 @@
     <Compile Include="Models\StudentResult.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\UniveristyContext.cs" />
+    <Compile Include="Models\Validators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CourseAssignToTeacher.cs" />
@@ -322,6 +336,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601231909306_z1.resx">
       <DependentUpon>201601231909306_z1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601261401189_z2.resx">
+      <DependentUpon>201601261401189_z2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601261633575_z3.resx">
+      <DependentUpon>201601261633575_z3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601261938204_z4.resx">
+      <DependentUpon>201601261938204_z4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

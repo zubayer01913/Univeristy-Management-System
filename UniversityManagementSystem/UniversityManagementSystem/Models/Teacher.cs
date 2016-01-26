@@ -11,16 +11,18 @@ namespace UniversityManagementSystem.Models
         public int Id { get; set; }
 
         //[Required]
-        //[DataType(DataType.Text)]
         //[StringLength(maximumLength: 20, MinimumLength = 5)]
         public String TeacherName { get; set; }
 
         public string Address { get; set; }
 
-        //[Required]
-        //[DataType(DataType.Text)]
-        //[StringLength(maximumLength: 13, MinimumLength = 11)]
+        [Required]
+        [EmailAddress]
+        public string TeacherEmail { get; set; }
 
+        //[Required]
+        //[RegularExpression(@"^[0-9]{.5,5}+", ErrorMessage = "Number should contain only numbers")]
+        //[StringLength(maximumLength: 13, MinimumLength = 11)]
         public string ContactNO { get; set; }
         public string Designation { get; set; }
 

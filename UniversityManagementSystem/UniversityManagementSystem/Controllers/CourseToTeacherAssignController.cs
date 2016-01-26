@@ -17,15 +17,42 @@ namespace UniversityManagementSystem.Controllers
         {
 
             List<CourseStatic> courseStatic = new List<CourseStatic>();
-            var list = from b in db.CourseAssigns
-                       join a in db.Semesters on b.Id equals a.Id
+
+
+
+
+            //var list = from r1 in
+            //               (from a in db.CourseAssignToTeachers
+            //                join b in db.Courses
+            //                on a.Id equals b.Id
+            //                select new
+            //                {
+            //                    a.TeacherId,
+            //                    b.CourseCode,
+            //                    b.Name,
+            //                    b.Id
+            //                })
+            //           join c in db.Semesters
+            //           on r1.Id equals c.Id
+            //           select new
+            //           {
+            //               r1.CourseCode,
+            //               r1.Name,
+            //               r1.TeacherId,
+            //               c.SemesterName
+
+            //           };
+
+            var list = from a in db.Courses
+                       join b in db.CourseAssignToTeachers on a.Id equals b.Id
                        select new
                        {
                            b.Id,
-                           b.CouseCode,
-                           b.CourseName,
-                           b.TeacherName,
-                           a.SemesterName,
+                           a.CourseCode,
+                           a.Name,
+                           a.Semester.SemesterName,
+                           b.TeacherName
+                           
                            
 
                        };
@@ -33,8 +60,8 @@ namespace UniversityManagementSystem.Controllers
             {
                 CourseStatic cour = new CourseStatic();
                 cour.Id = v.Id;
-                cour.CourseCode = v.CouseCode;
-                cour.Name = v.CourseName;
+                cour.CourseCode = v.CourseCode;
+                cour.Name = v.Name;
                 cour.TeacherName = v.TeacherName;
                 cour.SemesterName = v.SemesterName;
 
@@ -61,12 +88,12 @@ namespace UniversityManagementSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CourseAssignTeacher model)
+        public ActionResult Create(CourseAssignToTeacher model)
         {
 
             if (ModelState.IsValid)
             {
-                db.CourseAssigns.Add(model);
+                db.CourseAssignToTeachers.Add(model);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

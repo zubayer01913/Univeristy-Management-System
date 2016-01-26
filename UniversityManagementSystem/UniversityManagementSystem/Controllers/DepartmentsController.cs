@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using UniversityManagementSystem.Models;
 
 namespace UniversityManagementSystem.Controllers
@@ -34,6 +35,16 @@ namespace UniversityManagementSystem.Controllers
             }
             return View(department);
         }
+
+
+        //[HttpPost]
+        //public JsonResult doesUserNameExist(string Name)
+        //{
+        //    Department depart = new Department();
+        //    var user = Membership.GetUser(Name);
+
+        //    return Json(user == null);
+        //}
 
         // GET: Departments/Create
         public ActionResult Create()
