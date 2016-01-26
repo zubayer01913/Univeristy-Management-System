@@ -306,6 +306,8 @@
     <Content Include="Views\CourseToTeacherAssign\Sehedule.cshtml" />
     <Content Include="Views\EnRolls\Create.cshtml" />
     <Content Include="Views\StudentResult\Create.cshtml" />
+    <Content Include="Views\StudentResult\Index.cshtml" />
+    <Content Include="Views\EnRolls\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

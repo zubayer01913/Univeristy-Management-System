@@ -84,25 +84,25 @@
 
 
 
-    //function sendfromdata() {
-    //    var model = {
-    //        id: 0,
-    //        registerNumber: $('#registerId').val(),
-    //        studentName: $('#studentName').val(),
-    //        studentEmail: $('#studentEmail').val(),
-    //        department: $('#studentDepartment').val(),
-    //        selectCourse: $('#abc').val(),
-    //        enrollDate: $('#dd').val()
-    //        //courseCredit: $('#courseCredit').val()
+    function sendfromdata() {
+        var model = {
+            id: 0,
+            studentReg: $('#registerId').val(),
+            studentName: $('#studentName').val(),
+            studentEmail: $('#studentEmail').val(),
+            departmentName: $('#studentDepartment').val(),
+            selectCourse: $('#abc').val(),
+            enrollDate: $('#dd').val()
+            //courseCredit: $('#courseCredit').val()
 
-    //    };
+        };
 
-    //    $.post("/EnRolls/Create", model).then(function () {
+        $.post("/StudentResult/Create", model).then(function () {
 
-    //    });
-
-
+        });
 
 
 
+
+    }
 </script>

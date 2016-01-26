@@ -34,18 +34,18 @@ namespace UniversityManagementSystem.Controllers
 
         // POST: StudentResult/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(StudentResult model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
 
+                db.StudentResults.Add(model);
+                db.SaveChanges();
                 return RedirectToAction("Index");
+
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(model);
         }
 
         // GET: StudentResult/Edit/5
