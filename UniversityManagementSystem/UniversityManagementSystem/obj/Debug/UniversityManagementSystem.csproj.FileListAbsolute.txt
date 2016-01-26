@@ -176,3 +176,4 @@ C:\Users\Oasik\Desktop\UniversityManagementSystem\UniversityManagementSystem\obj
 C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.csprojResolveAssemblyReference.cache
 C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z3.resources
 C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z4.resources
+C:\Users\Oasik\Documents\GitHub\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z41.resources

@@ -174,16 +174,16 @@ namespace UniversityManagementSystem.Controllers
         public ActionResult Sehedule()
         {
             List<SeheduleRoom> sehedules = new List<SeheduleRoom>();
-            var list = from d in db.Courses
-                       join a in db.RoomNoAllocates on d.Id equals a.Id
+            var list = from a in db.RoomNoAllocates
+                       join b in db.Courses on a.Id equals b.Id
 
                        select new
                        {
-                           d.Id,
-                           d.CourseCode,
-                           d.Name,
-                           a.Room,
+                           a.Id,
+                           b.CourseCode,
                            a.CourseName,
+                           a.Room.RoomNumber,
+                           a.DateOfSaven,
                            a.Start,
                            a.End,
                        };
@@ -192,8 +192,9 @@ namespace UniversityManagementSystem.Controllers
                 SeheduleRoom sedule = new SeheduleRoom();
                 sedule.Id = v.Id;
                 sedule.CourseCode = v.CourseCode;
-                sedule.Name = v.Name;
-                //sedule.Room = v.Room;
+                sedule.Name = v.CourseName;
+                sedule.Room = v.RoomNumber;
+                sedule.SevenDay = v.DateOfSaven;
                 sedule.Start = v.Start;
                 sedule.End = v.End;
 

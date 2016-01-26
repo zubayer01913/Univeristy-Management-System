@@ -27,6 +27,18 @@
 
     @foreach (var item in Model)
     {
+        
+        @*@if (item.CourseCode == item.CourseCode)
+        {
+            @Html.DisplayFor(model => item.Room)
+            @Html.DisplayFor(model => item.SevenDay)
+            @Html.DisplayFor(model => item.Start)
+            @Html.DisplayFor(model => item.End)
+        }
+        
+        else
+        *@    
+           
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CourseCode)
@@ -35,15 +47,14 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
+                @Html.DisplayFor(model => item.Room)
+                @Html.DisplayFor(model => item.SevenDay)
                 @Html.DisplayFor(model => item.Start)
                 @Html.DisplayFor(model => item.End)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+            
         </tr>
+         
     }
 
 </table>
