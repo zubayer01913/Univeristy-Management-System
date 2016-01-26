@@ -19,13 +19,14 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
 
-
         <th>
             @Html.DisplayNameFor(model => model.SemesterName)
         </th>
-
+        <th>
+            @Html.DisplayNameFor(model => model.TeacherName)
+        </th>
     </tr>
-
+    
     @foreach (var item in Model)
     {
         <tr>
@@ -37,6 +38,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SemesterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherName)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

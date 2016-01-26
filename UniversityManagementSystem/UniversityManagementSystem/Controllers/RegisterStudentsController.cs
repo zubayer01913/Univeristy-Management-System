@@ -15,9 +15,9 @@ namespace UniversityManagementSystem.Controllers
     {
         private UniveristyContext db = new UniveristyContext();
 
-        List<int> CSE = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
-        List<int> EEE = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
-        List<int> BBA = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
+        public static List<int> CSE = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
+        public static List<int> EEE = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
+        public static List<int> BBA = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
 
         // GET: RegisterStudents
         public ActionResult Index()
@@ -60,19 +60,22 @@ namespace UniversityManagementSystem.Controllers
 
             if (ModelState.IsValid)
             {
-                if (CSE.ToString() == departmentName)
+                if ("CSE" == departmentName)
                 {
                     registerStudent.RegistrotionNo = departmentName + registrationDate + CSE[0];
                     CSE.RemoveAt(0);
                 }
-                else if (BBA.ToString() == departmentName)
+                else if ("BBA" == departmentName)
                 {
                     registerStudent.RegistrotionNo = departmentName + registrationDate + BBA[0];
                     CSE.RemoveAt(0);
                 }
                 else
+                {
                     registerStudent.RegistrotionNo = departmentName + registrationDate + CSE[0];
                     CSE.RemoveAt(0);
+                }
+                    
 
                 db.RegisterStudents.Add(registerStudent);
                 db.SaveChanges();

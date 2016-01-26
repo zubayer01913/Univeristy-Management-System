@@ -13,26 +13,29 @@ namespace UniversityManagementSystem.Controllers
         private UniveristyContext db = new UniveristyContext();
 
         // GET: CourseToTeacherAssign
-        public ActionResult Index()
+        public ActionResult Index(CourseStatic model)
         {
 
             List<CourseStatic> courseStatic = new List<CourseStatic>();
-            var list = from b in db.Courses
-                       join a in db.Semesters on b.SemesterID equals a.Id
+            var list = from b in db.CourseAssigns
+                       join a in db.Semesters on b.Id equals a.Id
                        select new
                        {
-                           a.Id,
-                           b.CourseCode,
-                           b.Name,
+                           b.Id,
+                           b.CouseCode,
+                           b.CourseName,
+                           b.TeacherName,
                            a.SemesterName,
+                           
 
                        };
             foreach (var v in list)
             {
                 CourseStatic cour = new CourseStatic();
                 cour.Id = v.Id;
-                cour.CourseCode = v.CourseCode;
-                cour.Name = v.Name;
+                cour.CourseCode = v.CouseCode;
+                cour.Name = v.CourseName;
+                cour.TeacherName = v.TeacherName;
                 cour.SemesterName = v.SemesterName;
 
                 courseStatic.Add(cour);
@@ -54,26 +57,8 @@ namespace UniversityManagementSystem.Controllers
         {
             ViewBag.Department = new SelectList(db.Depatments, "Id", "Name");
 
-
-
             return View();
         }
-
-
-        //public ActionResult Create()
-        //{
-        //    ViewBag.DepartmentID = new SelectList(db.Depatments, "Id", "Name");
-        //    ViewBag.TeacherID = new SelectList(db.Teachers, "Id", "TeacherName");
-        //    ViewBag.TeacherCredit = new SelectList(db.Teachers, "Id", "CreditToBeTaken");
-        //    ViewBag.CourseID = new SelectList(db.Courses, "Id", "CourseCode");
-        //    ViewBag.CourseName = new SelectList(db.Courses, "Id", "Name");
-        //    ViewBag.CourseCredit = new SelectList(db.Courses, "Id", "Credit");
-        //    return View();
-        //}
-
-        //// POST: Courses/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 
         [HttpPost]
         public ActionResult Create(CourseAssignTeacher model)
@@ -88,14 +73,6 @@ namespace UniversityManagementSystem.Controllers
 
             return View(model);
            
-
-            //ViewBag.DepartmentID = new SelectList(db.Depatments, "Id", "Name", assign.DepatmentName);
-            //ViewBag.TeacherID = new SelectList(db.Teachers, "Id", "TeacherName", assign.TeacherName);
-            //ViewBag.TeacherCredit = new SelectList(db.Teachers, "Id", "CreditToBeTaken", assign.CreditCanTaken);
-            //ViewBag.CourseID = new SelectList(db.Courses, "Id", "CourseCode", assign.CourseCode);
-            //ViewBag.CourseName = new SelectList(db.Courses, "Id", "Name", assign.CourseName);
-            //ViewBag.CourseCredit = new SelectList(db.Courses, "Id", "Credit", assign.CourseCredit);
-            //return View();
         }
 
 
@@ -166,7 +143,7 @@ namespace UniversityManagementSystem.Controllers
 
 
 
-
+// shehedule View
         public ActionResult Sehedule()
         {
             List<SeheduleRoom> sehedules = new List<SeheduleRoom>();

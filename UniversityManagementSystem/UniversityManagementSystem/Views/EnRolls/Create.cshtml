@@ -1,0 +1,106 @@
+﻿@model UniversityManagementSystem.Models.EnrollCourse
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+    <div class="form-horizontal">
+        <h4>EnrollCourse</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <p class="control-label col-md-2">Student Reg.No</p>
+            <div class="col-md-10">
+                @Html.DropDownList("RegistrationNumber", null, htmlAttributes: new { @class = "control-label col-md-2", id = "registerId", })
+            </div>
+        </div>
+        <div class="form-group">
+            <p class="control-label col-md-2">Stuent Name</p>
+            <div class="col-md-10">
+                <input type="text" id="studentName" /> 
+            </div>
+        </div>
+        <div class="form-group">
+            <p class="control-label col-md-2">Teaher</p>
+            <div class="col-md-10">
+                <input type="text" id="studentEmail" /> 
+            </div>
+        </div>
+        <div class="form-group">
+            <p class="control-label col-md-2">Teaher</p>
+            <div class="col-md-10">
+                <input type="text" id="studentDepartment" /> 
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2">Student Reg.No</p>
+            <div class="col-md-10">
+                @Html.DropDownList("CourseName", null, htmlAttributes: new { @class = "control-label col-md-2" , id= "abc" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EnrollDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EnrollDate, new { htmlAttributes = new { @class = "form-control", id="dd"} })
+                @Html.ValidationMessageFor(model => model.EnrollDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" onclick="sendfromdata()" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script>
+    var v = $('#abc').val();
+    var c = $('#dd').val();
+
+    $('#registerId').on("change", function () {
+        var id = $('#registerId').val();
+
+        $.post("/EnRolls/GetStudentList", { id: id }).success(function (data) {
+            console.log(data);
+            var obj = data[0];
+            $('#studentName').val(obj.StudentName);
+            $('#studentEmail').val(obj.StudentEmail);
+            $('#studentDepartment').val(obj.Name);
+
+        });
+    });
+
+
+
+    function sendfromdata() {
+        var model = {
+            id: 0,
+            registerNumber: $('#registerId').val(),
+            studentName: $('#studentName').val(),
+            studentEmail: $('#studentEmail').val(),
+            department: $('#studentDepartment').val(),
+            selectCourse: $('#abc').val(),
+            enrollDate: $('#dd').val()
+            //courseCredit: $('#courseCredit').val()
+
+        };
+
+        $.post("/EnRolls/Create", model).then(function () {
+
+        });
+
+
+
+    }
+
+</script>
+

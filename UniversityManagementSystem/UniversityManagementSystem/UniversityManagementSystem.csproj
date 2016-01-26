@@ -162,12 +162,14 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\CourseToTeacherAssignController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\EnRollsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegisterStudentsController.cs" />
     <Compile Include="Controllers\RoomNoAllocatsController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\SemestersController.cs" />
+    <Compile Include="Controllers\StudentResultController.cs" />
     <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -302,6 +304,8 @@
     <Content Include="Views\RoomNoAllocats\Edit.cshtml" />
     <Content Include="Views\RoomNoAllocats\Index.cshtml" />
     <Content Include="Views\CourseToTeacherAssign\Sehedule.cshtml" />
+    <Content Include="Views\EnRolls\Create.cshtml" />
+    <Content Include="Views\StudentResult\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
