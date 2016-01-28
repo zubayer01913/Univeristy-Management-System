@@ -55,31 +55,34 @@ namespace UniversityManagementSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,StudentName,StudentEmail,ContactNumber,CurrentDate,StudentAddress,DepartmentID")] RegisterStudent registerStudent)
         {
-            var departmentName = db.Depatments.Where(x => x.Id == registerStudent.DepartmentID).Select(x => x.Name).SingleOrDefault();
-            var registrationDate = registerStudent.CurrentDate.Year;
+            //var departmentName = db.Depatments.Where(x => x.Id == registerStudent.DepartmentID).Select(x => x.Name).SingleOrDefault();
+            //var registrationDate = registerStudent.CurrentDate.Year;
+
 
             if (ModelState.IsValid)
             {
-                if ("CSE" == departmentName)
-                {
-                    registerStudent.RegistrotionNo = departmentName + registrationDate + CSE[0];
-                    CSE.RemoveAt(0);
-                }
-                else if ("BBA" == departmentName)
-                {
-                    registerStudent.RegistrotionNo = departmentName + registrationDate + BBA[0];
-                    CSE.RemoveAt(0);
-                }
-                else
-                {
-                    registerStudent.RegistrotionNo = departmentName + registrationDate + CSE[0];
-                    CSE.RemoveAt(0);
-                }
+                registerStudent.RegistrotionNo = CreateStudentRegistrationNO(registerStudent);
+                //if ("CSE" == departmentName)
+                //{
+                //    registerStudent.RegistrotionNo = departmentName + registrationDate + CSE[0];
+                //    CSE.RemoveAt(0);
+                //}
+                //else if ("BBA" == departmentName)
+                //{
+                //    registerStudent.RegistrotionNo = departmentName + registrationDate + BBA[0];
+                //    CSE.RemoveAt(0);
+                //}
+                //else
+                //{
+                //    registerStudent.RegistrotionNo = departmentName + registrationDate + CSE[0];
+                //    CSE.RemoveAt(0);
+                //}
                     
 
                 db.RegisterStudents.Add(registerStudent);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Details", new { id =  registerStudent.Id});
             }
 
             ViewBag.DepartmentID = new SelectList(db.Depatments, "Id", "Name", registerStudent.DepartmentID);
@@ -144,6 +147,23 @@ namespace UniversityManagementSystem.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        private string CreateStudentRegistrationNO(RegisterStudent registerStudent)
+        {
+            int id = db.RegisterStudents.Count(s => (s.DepartmentID == registerStudent.DepartmentID) && (s.CurrentDate.Year == registerStudent.CurrentDate.Year)) + 1;
+
+            Department bDepartment = db.Depatments.Where(d => d.Id == registerStudent.DepartmentID).FirstOrDefault();
+            string registrationId = bDepartment.Name + "-" + registerStudent.CurrentDate.Year + "-";
+            string zero = "";
+            int len = 3 - id.ToString().Length;
+            for(int i = 0; i < len; i++)
+            {
+                zero = "0" + zero;
+            }
+            return registrationId + zero +id;
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {

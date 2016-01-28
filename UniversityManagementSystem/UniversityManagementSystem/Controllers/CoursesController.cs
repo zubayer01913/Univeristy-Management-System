@@ -53,9 +53,10 @@ namespace UniversityManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                course.IsAssigned = true;
                 db.Courses.Add(course);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.Msg = "Course Saved Succesfully!";
             }
 
             ViewBag.DepartmentID = new SelectList(db.Depatments, "Id", "Name", course.DepartmentID);
@@ -131,6 +132,27 @@ namespace UniversityManagementSystem.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        [HttpPost]
+        public JsonResult DoesCourseCodeExist(string CourseCode)
+        {
+            return Json((!db.Courses.Any(x => x.CourseCode == CourseCode)), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult DoesCourseNameExist(string Name)
+        {
+            return Json((!db.Courses.Any(x => x.Name == Name)), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public void UnassignAllCourse()
+        {
+            db.Courses.ToList().ForEach(x => {
+                x.IsAssigned = false;
+                db.Entry(x).State = EntityState.Modified;
+            });
+            db.SaveChanges();
         }
     }
 }

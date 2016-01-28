@@ -13,6 +13,8 @@ namespace UniversityManagementSystem.Controllers
         // GET: StudentResult
         public ActionResult Index()
         {
+            ViewBag.SelectGradLetter = new SelectList(new[] { "4", "3.75", "3.5", "3.25", "3", "2.75", "2.5", "2.25", "2", "1", "0" });
+            ViewBag.RegistrationNumber = new SelectList(db.RegisterStudents, "Id", "RegistrotionNo");
             return View();
         }
 
@@ -25,7 +27,6 @@ namespace UniversityManagementSystem.Controllers
         // GET: StudentResult/Create
         public ActionResult Create()
         {
-            //var categoryList = new SelectList(new[] { "4", "3.75", "3.5", "3.25", "3","2.75","2.5","2.25","2","1","0" });
             ViewBag.SelectGradLetter = new SelectList(new[] { "4", "3.75", "3.5", "3.25", "3", "2.75", "2.5", "2.25", "2", "1", "0" });
             ViewBag.RegistrationNumber = new SelectList(db.RegisterStudents, "Id", "RegistrotionNo");
             ViewBag.CourseName = new SelectList(db.Courses, "Id", "Name");
@@ -38,14 +39,12 @@ namespace UniversityManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 db.StudentResults.Add(model);
                 db.SaveChanges();
-                return RedirectToAction("Index");
-
+                return null;
             }
 
-            return View(model);
+            return null;
         }
 
         // GET: StudentResult/Edit/5

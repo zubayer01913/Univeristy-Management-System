@@ -9,14 +9,14 @@
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            <p class="control-label col-md-2">Department</p>
+            <div class="col-md-2"><p>Department Name</p></div>
             <div class="col-md-10">
-                @Html.DropDownList("Department", null, "Select Department", htmlAttributes: new { @class = "control-label col-md-2", id = "departmentId", })
+                @Html.DropDownList("Department", null, "Select Department", htmlAttributes: new { @class = "control-label col-md-2", id = "departmentId" })
             </div>
         </div>
 
         <div class="form-group">
-            <p class="control-label col-md-2">Teaher</p>
+            <div class="col-md-2"><p>Teacher Name</p></div>
             <div class="col-md-10">
                 <select id="teacherId">
                     <option>Please Select a Value</option>
@@ -24,13 +24,19 @@
             </div>
         </div>
         <div class="form-group">
-            <p class="control-label col-md-2">Credit to be taken</p>
+            <div class="col-md-2"><p>Credit To Be Taken</p></div>
             <div class="col-md-10">
-                <input type="text" id="creditTaken" />
+                <input type="text" id="creditTaken" readonly />
             </div>
         </div>
         <div class="form-group">
-            <p class="control-label col-md-2">Couse Code</p>
+            <div class="col-md-2"><p>Remaining Credit </p></div>
+            <div class="col-md-10">
+                <input type="text" id="Remaincredit" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2"><p>Course Code</p></div>
             <div class="col-md-10">
                 <select id="couseCode">
                     <option>Please Select a Value</option>
@@ -38,15 +44,15 @@
             </div>
         </div>
         <div class="form-group">
-            <p class="control-label col-md-2">Course Name</p>
+            <div class="col-md-2"><p>Course Name</p></div>
             <div class="col-md-10">
-               <input type="text" id="courseName" /> 
+                <input type="text" id="courseName" readonly /> 
             </div>
         </div>
         <div class="form-group">
-            <p class="control-label col-md-2">Couse Credit</p>
+            <div class="col-md-2"><p>Course Credit</p></div>
             <div class="col-md-10">
-                <input type="text" id="courseCredit" />
+                <input type="text" id="courseCredit" readonly />
             </div>
         </div>
 
@@ -105,13 +111,15 @@
         $('#courseCredit').val(name.split(",")[1]);
     });
 
+    //var a = $('#creditTaken').val() - $('#courseCredit').val();
+
     function sendfromdata() {
         var model = {
             id: 0,
             departmentName: $('#departmentId').val(),
             teacherName: $('#teacherId').val(),
             creditToTaken: $('#creditTaken').val(),
-            remainingCredit: 5,
+            remainingCredit: $('#creditTaken').val() - $('#courseCredit').val(),
             couseCode: $('#couseCode').val(),
             courseName: $('#courseName').val(),
             courseCredit: $('#courseCredit').val()
@@ -121,6 +129,8 @@
         $.post("/CourseToTeacherAssign/Create", model).then(function () {
 
         });
+
+        alert("success");
     }
 
 
@@ -128,43 +138,4 @@
 
 </script>
 
-
-
-
-    @*function model(id_var, departmentName_var, teacherName_var, creditToTaken_var, remainingCredit_var, couseCode_var, courseName_var, courseCredit_var)
-    {
-        return {
-            id: id_var,
-            departmentName: departmentName_var,
-            teacherName: teacherName_var,
-            creditToTaken: creditToTaken_var,
-            remainingCredit: creditToTaken_var-courseCredit_var,
-            couseCode: couseCode_var,
-            courseName: courseName_var,
-            courseCredit: courseCredit_var
-                };
-
-    }
-
-    function sendfromdata() {
-        var model = model(0, $('#departmentId').val(), $('#teacherId').val(), $('#creditTaken').val(),remainingCredit,$('#couseCode').val(),$('#courseName').val(), $('#courseCredit').val());
-        //    {
-        //    id: 0,
-        //    departmentName: $('#departmentId').val(),
-        //    teacherName: $('#teacherId').val(),
-        //    creditToTaken: $('#creditTaken').val(),
-        //        courseCredit: $('#courseCredit').val(),
-        //    remainingCredit: this.creditToTaken - this.courseCredit,
-        //    //function (test) {
-        //    //    return this.creditToTaken - this.courseCredit;
-        //    //},
-        //    couseCode: $('#couseCode').val(),
-        //    courseName: $('#courseName').val()
-
-        //};
-
-        $.post("/CourseToTeacherAssign/Create", model).then(function () {
-
-        });
-    }*@
 

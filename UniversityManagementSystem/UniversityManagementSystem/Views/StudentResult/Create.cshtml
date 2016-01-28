@@ -6,49 +6,55 @@
 
 <h2>Create</h2>
 
+@if (ViewBag.Msg != null)
+{
+    <h4 style="color: green">@ViewBag.Msg</h4>
+
+}
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        <h4>EnrollCourse</h4>
+        <h4>Student Result</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            <p class="control-label col-md-2">Student Reg.No</p>
+            <div class="col-md-2"><p>Student Reg No:</p></div>
             <div class="col-md-10">
-                @Html.DropDownList("RegistrationNumber", null, htmlAttributes: new { @class = "control-label col-md-2", id = "registerId", })
+                @Html.DropDownList("RegistrationNumber", null, "select Value", htmlAttributes: new { @class = "control-label col-md-2", id = "registerId" })
             </div>
         </div>
         <div class="form-group">
-            <p class="control-label col-md-2">Stuent Name</p>
+            <div class="col-md-2"><p>Student Name</p></div>
             <div class="col-md-10">
-                <input type="text" id="studentName" />
+                <input type="text" id="studentName" readonly />
             </div>
         </div>
         <div class="form-group">
-            <p class="control-label col-md-2">Teaher</p>
+            <div class="col-md-2"><p>Email Address</p></div>
             <div class="col-md-10">
-                <input type="text" id="studentEmail" />
+                <input type="text" id="studentEmail" readonly />
             </div>
         </div>
         <div class="form-group">
-            <p class="control-label col-md-2">Teaher</p>
+            <div class="col-md-2"><p>Department Name</p></div>
             <div class="col-md-10">
-                <input type="text" id="studentDepartment" />
+                <input type="text" id="studentDepartment" readonly />
             </div>
         </div>
 
         <div class="form-group">
-            <p class="control-label col-md-2">Student Reg.No</p>
+            <div class="col-md-2"><p>Select Course</p></div>
             <div class="col-md-10">
                 @Html.DropDownList("CourseName", null, htmlAttributes: new { @class = "control-label col-md-2", id = "abc" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SelectGradLetter, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2"><p>Select Grad</p></div>
             <div class="col-md-10">
-                @Html.DropDownList("SelectGradLetter", null, htmlAttributes: new { @class = "control-label col-md-2", id = "abc" })
+                @Html.DropDownList("SelectGradLetter", null, htmlAttributes: new { @class = "control-label col-md-2", id = "dd" })
                 @*@Html.DropDownListFor(model => model.SelectGradLetter, (SelectList)ViewBag.CategoryList)*@
                 @Html.ValidationMessageFor(model => model.SelectGradLetter, "", new { @class = "text-danger" })
             </div>
@@ -66,8 +72,8 @@
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 
 <script>
-    var v = $('#abc').val();
-    var c = $('#dd').val();
+    //var v = $('#abc').val();
+    //var c = $('#dd').val();
 
     $('#registerId').on("change", function () {
         var id = $('#registerId').val();
@@ -92,17 +98,27 @@
             studentEmail: $('#studentEmail').val(),
             departmentName: $('#studentDepartment').val(),
             selectCourse: $('#abc').val(),
-            enrollDate: $('#dd').val()
+            selectGradLetter: $('#dd').val()
             //courseCredit: $('#courseCredit').val()
 
         };
 
-        $.post("/StudentResult/Create", model).then(function () {
-
+        $.ajax({
+            type: "POST",
+            url: "/StudentResult/Create",
+            data: model,
+            success: function () { alert("insertion successful"); },
+           
         });
 
+        //$.post("/StudentResult/Create", model).done(function (data) {
+        //    alert(data);
+        //}).fail(function (data) {
+        //    alert(data);
+        //});
+        alert("insertion successful");
 
-
+        
 
     }
 </script>

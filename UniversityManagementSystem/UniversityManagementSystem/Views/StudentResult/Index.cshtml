@@ -1,8 +1,70 @@
 ﻿@model UniversityManagementSystem.Models.StudentResult
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Create";
 }
 
-<h2>Index</h2>
+<h2>Create</h2>
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Student Result</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-2"><p>Student Reg No:</p></div>
+            <div class="col-md-10">
+                @Html.DropDownList("RegistrationNumber", null, "select Value", htmlAttributes: new { @class = "control-label col-md-2", id = "registerId" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2"><p>Student Name</p></div>
+            <div class="col-md-10">
+                <input type="text" id="studentName" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2"><p>Email Address</p></div>
+            <div class="col-md-10">
+                <input type="text" id="studentEmail" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2"><p>Department Name</p></div>
+            <div class="col-md-10">
+                <input type="text" id="studentDepartment" readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" onclick="sendfromdata()" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script>
+    var v = $('#abc').val();
+    var c = $('#dd').val();
+
+    $('#registerId').on("change", function () {
+        var id = $('#registerId').val();
+
+        $.post("/StudentResult/GetStudentList", { id: id }).success(function (data) {
+            console.log(data);
+            var obj = data[0];
+            $('#studentName').val(obj.StudentName);
+            $('#studentEmail').val(obj.StudentEmail);
+            $('#studentDepartment').val(obj.Name);
+
+        });
+    });
+
+
+</script>

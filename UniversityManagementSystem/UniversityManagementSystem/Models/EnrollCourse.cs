@@ -8,12 +8,20 @@ namespace UniversityManagementSystem.Models
 {
     public class EnrollCourse
     {
+
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "Select Register Number can't be Rgister Number")]
         public string RegisterNumber { get; set; }
+
         public string StudentName { get; set; }
+
+        
         [EmailAddress]
         public string StudentEmail { get; set; }
         public string Department { get; set; }
+
+        [Required(ErrorMessage = "Select Course can't be empty")]
         public string SelectCourse { get; set; }
 
         [DataType(DataType.Date)]

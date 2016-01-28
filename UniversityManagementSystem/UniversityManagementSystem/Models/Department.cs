@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -13,13 +14,19 @@ namespace UniversityManagementSystem.Models
     {
         public int Id { get; set; }
 
-        //[Required(ErrorMessage = "Place Name is required and lengnth 3-5")]
-        //[StringLength(maximumLength: 3, MinimumLength = 5)]
+        [DisplayName("Code")]
+        [Required(ErrorMessage = "Code Field is required")]
+        [Index(IsUnique = true)]
+        [Remote("DoesDepartmentCodeExist", "Departments", HttpMethod = "POST", ErrorMessage = "Code already exist")]
+        [MaxLength(50)]
+        [StringLength(7, ErrorMessage = "The {0} must be at least {2} characters long and less then 8 characters.", MinimumLength = 2)]
         public string Code { get; set; }
 
-        //[Required]
-        //[StringLength(50, MinimumLength = 2, ErrorMessage = "* A valid Department name is required.")]
-        //[Display(Name = "Department Name")]
+        [DisplayName("Name")]
+        [Required(ErrorMessage = "Name Field is required")]
+        [Index(IsUnique = true)]
+        [Remote("DoesDepartmentNameExist", "Departments", HttpMethod = "POST", ErrorMessage = "Name already exist")]
+        [MaxLength(100)]
         public string Name { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }

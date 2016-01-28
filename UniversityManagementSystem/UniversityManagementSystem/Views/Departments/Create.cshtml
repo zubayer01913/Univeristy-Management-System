@@ -4,9 +4,13 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create Department</h2>
 
+@if (ViewBag.Msg != null)
+{
+    <h4 style="color: green">@ViewBag.Msg</h4>
 
+}
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()

@@ -95,7 +95,7 @@ namespace UniversityManagementSystem.Controllers
             {
                 db.Entry(department).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.Msg = "Department Saved Succesfully!";
             }
             return View(department);
         }
@@ -133,6 +133,18 @@ namespace UniversityManagementSystem.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        public JsonResult DoesDepartmentCodeExist(string Code)
+        {
+            return Json((!db.Depatments.Any(x => x.Code == Code)), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult DoesDepartmentNameExist(string Name)
+        {
+            return Json((!db.Depatments.Any(x => x.Name == Name)), JsonRequestBehavior.AllowGet);
         }
     }
 }

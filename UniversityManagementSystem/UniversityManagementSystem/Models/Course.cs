@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace UniversityManagementSystem.Models
 {
@@ -10,154 +13,39 @@ namespace UniversityManagementSystem.Models
     {
         public int Id { get; set; }
 
-        //[Required(ErrorMessage = "Place Name is required and at least five(5)")]
-        //[StringLength(maximumLength: 5, MinimumLength = 7)]
+        [DisplayName("Code")]
+        [Required(ErrorMessage = "Course Code Field is required")]
+        [Index(IsUnique = true)]
+        [Remote("DoesCourseCodeExist", "Courses", HttpMethod = "POST", ErrorMessage = "Course Code already exist")]
+        [MaxLength(50)]
+        [StringLength(50, ErrorMessage = "{0} must be at least {2} characters long", MinimumLength = 5)]
         public string CourseCode { get; set; }
 
-        //[Required(ErrorMessage = "Place Name is required")]
-        //[StringLength(maximumLength: 2, MinimumLength = 50)]
+        [DisplayName("Name")]
+        [Required(ErrorMessage = "Course Name Field is required")]
+        [Index(IsUnique = true)]
+        [Remote("DoesCourseNameExist", "Courses", HttpMethod = "POST", ErrorMessage = "Course Name already exist")]
+        [MaxLength(100)]
         public String Name { get; set; }
-        
-        //[Required]
-        ////[RegularExpression(@"^[0-9]{.5,5}", ErrorMessage = "Number should contain only numbers")]
-        //[Range(.5, 5)]
+
+        [DisplayName("Credit")]
+        [Required(ErrorMessage = "Course Credit Field is required")]
+        [Range(.5, 5, ErrorMessage = "Course Credit must be lies between 0.5  to 5.0")]
         public float Credit { get; set; }
+
+        [DisplayName("Description")]
+        [DataType(DataType.MultilineText)]
         public string Descriptio { get; set; }
 
+        [Required(ErrorMessage = "Department can't empty")]
         public int DepartmentID { get; set; }
         public virtual Department Department { get; set; }
 
         public int SemesterID { get; set; }
         public virtual Semester Semester { get; set; }
+
+        public bool IsAssigned { get; set; }
        
     }
 }
 
-
-
-
-//var categoryList = new SelectList(new[] { "SaturDay", "SunDay"," MonDay", "TuesDay", "WesnesDay", "ThursDay", "FriDay"});
-//            ViewBag.CategoryList = categoryList;
-
-//  public ActionResult GetCouseCodeList(int id)
-//        {
-//            var list = db.Courses.Where(x => x.DepartmentID == id).Select(x => new { value = x.Id, Text = x.Name}).ToList();
-
-//            return Json(list);
-//        }
-
-
-
-
-
-
-
-
-
-//@model UniversityManagementSystem.Models.RoomAllocate
-
-//@{
-//    ViewBag.Title = "Create";
-//}
-
-//<h2>Create</h2>
-
-
-//@using (Html.BeginForm()) 
-//{
-//    @Html.AntiForgeryToken()
-    
-//    <div class="form-horizontal">
-//        <h4>RoomAllocate</h4>
-//        <hr />
-//        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-//        <div class="form-group">
-//            @Html.LabelFor(model => model.DepartmentID, "DepartmentID", htmlAttributes: new { @class = "control-label col-md-2" })
-//            <div class="col-md-10">
-//                @Html.DropDownList("DepartmentID", null, "Select Department", htmlAttributes: new { @class = "form-control", id = "departmentId" })
-//                @*@Html.DropDownList("DepartmentID", null, "Select Department", htmlAttributes: new { @class = "control-label col-md-2", id = "departmentId", })*@
-//                @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
-//            </div>
-//        </div>
-
-//        <div class="form-group">
-//            <p class="control-label col-md-2">Couse Code</p>
-//            <div class="col-md-10">
-//                <select @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control", id = "couseCode" } })></select>
-//            </div>
-//        </div>
-
-//        <div class="form-group">
-//            @Html.LabelFor(model => model.RoomId, "RoomId", htmlAttributes: new { @class = "control-label col-md-2" })
-//            <div class="col-md-10">
-//                @Html.DropDownList("RoomId", null, htmlAttributes: new { @class = "form-control" })
-//                @Html.ValidationMessageFor(model => model.RoomId, "", new { @class = "text-danger" })
-//            </div>
-//        </div>
-
-//        <div class="form-group">
-//            @Html.LabelFor(model => model.DateOfSaven, htmlAttributes: new { @class = "control-label col-md-2" })
-//            <div class="col-md-10">
-//                @Html.DropDownListFor(model => model.DateOfSaven, (SelectList)ViewBag.CategoryList)
-//                @Html.ValidationMessageFor(model => model.DateOfSaven, "", new { @class = "text-danger" })
-//            </div>
-//        </div>
-
-//        <div class="form-group">
-//            @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
-//            <div class="col-md-10">
-//                @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
-//                @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
-//            </div>
-//        </div>
-
-//        <div class="form-group">
-//            @Html.LabelFor(model => model.Endtime, htmlAttributes: new { @class = "control-label col-md-2" })
-//            <div class="col-md-10">
-//                @Html.EditorFor(model => model.Endtime, new { htmlAttributes = new { @class = "form-control" } })
-//                @Html.ValidationMessageFor(model => model.Endtime, "", new { @class = "text-danger" })
-//            </div>
-//        </div>
-
-//        <div class="form-group">
-//            <div class="col-md-offset-2 col-md-10">
-//                <input type="submit" value="Create" class="btn btn-default" />
-//            </div>
-//        </div>
-//    </div>
-//}
-
-//<div>
-//    @Html.ActionLink("Back to List", "Index")
-//</div>
-
-//@section Scripts {
-//    @Scripts.Render("~/bundles/jqueryval")
-//}
-//<script src="~/Scripts/jquery-1.10.2.js"></script>
-//<script>
-
-//    $('#departmentId').on("change onmouseover", function () {
-//        var id = $('#departmentId').val();
-//        console.log(id);
-//        $.post("/CourseToTeacherAssign/GetCouseCodeList", { id: id }).success(function (data) {
-//            teacher = data;
-//            console.log(data);
-//            $('#couseCode').empty().append(' <option value="">Please Select a value</option>');
-//            data.forEach(function (obj) {
-//                // $('#couseCode').append(' <option value="' + obj.value + '">' + obj.Text + '</option>');
-//                //$("#selectbox").val(obj.value).attr('selected', true);
-
-//                $('#couseCode').append($('<option>', {
-//                    value: obj.value,
-//                    text: obj.Text,
-//                    //credit: boj.creditNo
-//                }));
-//            });
-
-
-//        });
-//    });
-
-
-//</script>

@@ -55,14 +55,14 @@ namespace UniversityManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                roomNoAllocat.IsAssigned = true;
                 db.RoomNoAllocates.Add(roomNoAllocat);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
             ViewBag.DepartmentID = new SelectList(db.Depatments, "Id", "Name", roomNoAllocat.DepartmentID);
             ViewBag.RoomId = new SelectList(db.Rooms, "Id", "RoomNumber", roomNoAllocat.RoomId);
-            return View(roomNoAllocat);
+            return RedirectToAction("Index");
         }
 
         // GET: RoomNoAllocats/Edit/5
@@ -141,5 +141,17 @@ namespace UniversityManagementSystem.Controllers
 
             return Json(list);
         }
+
+        [HttpPost]
+        public void UnassignAllCourse()
+        {
+            db.RoomNoAllocates.ToList().ForEach(x =>
+            {
+                x.IsAssigned = false;
+                db.Entry(x).State = EntityState.Modified;
+            });
+            db.SaveChanges();
+        }
+
     }
 }

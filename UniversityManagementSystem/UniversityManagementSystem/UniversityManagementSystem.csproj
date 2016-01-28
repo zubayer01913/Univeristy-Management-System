@@ -196,6 +196,58 @@
     <Compile Include="Migrations\201601262110260_z41.Designer.cs">
       <DependentUpon>201601262110260_z41.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601280623548_z5.cs" />
+    <Compile Include="Migrations\201601280623548_z5.Designer.cs">
+      <DependentUpon>201601280623548_z5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601280732175_z7.cs" />
+    <Compile Include="Migrations\201601280732175_z7.Designer.cs">
+      <DependentUpon>201601280732175_z7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601280810308_z8.cs" />
+    <Compile Include="Migrations\201601280810308_z8.Designer.cs">
+      <DependentUpon>201601280810308_z8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601280908227_z9.cs" />
+    <Compile Include="Migrations\201601280908227_z9.Designer.cs">
+      <DependentUpon>201601280908227_z9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601280920070_z10.cs" />
+    <Compile Include="Migrations\201601280920070_z10.Designer.cs">
+      <DependentUpon>201601280920070_z10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601280926535_z11.cs" />
+    <Compile Include="Migrations\201601280926535_z11.Designer.cs">
+      <DependentUpon>201601280926535_z11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601281002229_z12.cs" />
+    <Compile Include="Migrations\201601281002229_z12.Designer.cs">
+      <DependentUpon>201601281002229_z12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601281201044_z13.cs" />
+    <Compile Include="Migrations\201601281201044_z13.Designer.cs">
+      <DependentUpon>201601281201044_z13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601281257366_z14.cs" />
+    <Compile Include="Migrations\201601281257366_z14.Designer.cs">
+      <DependentUpon>201601281257366_z14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601281434284_z15.cs" />
+    <Compile Include="Migrations\201601281434284_z15.Designer.cs">
+      <DependentUpon>201601281434284_z15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601281816253_z17.cs" />
+    <Compile Include="Migrations\201601281816253_z17.Designer.cs">
+      <DependentUpon>201601281816253_z17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601282001252_z18.cs" />
+    <Compile Include="Migrations\201601282001252_z18.Designer.cs">
+      <DependentUpon>201601282001252_z18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601282033524_19.cs" />
+    <Compile Include="Migrations\201601282033524_19.Designer.cs">
+      <DependentUpon>201601282033524_19.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
@@ -324,8 +376,8 @@
     <Content Include="Views\CourseToTeacherAssign\Sehedule.cshtml" />
     <Content Include="Views\EnRolls\Create.cshtml" />
     <Content Include="Views\StudentResult\Create.cshtml" />
-    <Content Include="Views\StudentResult\Index.cshtml" />
     <Content Include="Views\EnRolls\Index.cshtml" />
+    <Content Include="Views\StudentResult\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -352,6 +404,45 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601262110260_z41.resx">
       <DependentUpon>201601262110260_z41.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601280623548_z5.resx">
+      <DependentUpon>201601280623548_z5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601280732175_z7.resx">
+      <DependentUpon>201601280732175_z7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601280810308_z8.resx">
+      <DependentUpon>201601280810308_z8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601280908227_z9.resx">
+      <DependentUpon>201601280908227_z9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601280920070_z10.resx">
+      <DependentUpon>201601280920070_z10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601280926535_z11.resx">
+      <DependentUpon>201601280926535_z11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601281002229_z12.resx">
+      <DependentUpon>201601281002229_z12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601281201044_z13.resx">
+      <DependentUpon>201601281201044_z13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601281257366_z14.resx">
+      <DependentUpon>201601281257366_z14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601281434284_z15.resx">
+      <DependentUpon>201601281434284_z15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601281816253_z17.resx">
+      <DependentUpon>201601281816253_z17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601282001252_z18.resx">
+      <DependentUpon>201601282001252_z18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601282033524_19.resx">
+      <DependentUpon>201601282033524_19.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

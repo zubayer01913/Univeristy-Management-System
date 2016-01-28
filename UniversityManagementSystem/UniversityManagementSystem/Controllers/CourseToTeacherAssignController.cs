@@ -93,6 +93,7 @@ namespace UniversityManagementSystem.Controllers
 
             if (ModelState.IsValid)
             {
+                model.IsAssigned = true;
                 db.CourseAssignToTeachers.Add(model);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -166,8 +167,13 @@ namespace UniversityManagementSystem.Controllers
             return Json(list);
         }
 
-  
 
+        //public ActionResult GetRemainCreadeList(int id)
+        //{
+        //    var list = db.CourseAssignToTeachers.Where(x => x.DepartmentID == id).Select(x => new { x.Id, x.CourseCode, x.Name, x.Credit }).ToList();
+
+        //    return Json(list);
+        //}
 
 
 // shehedule View

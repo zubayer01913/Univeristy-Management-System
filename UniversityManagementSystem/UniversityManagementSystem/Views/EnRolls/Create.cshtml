@@ -6,45 +6,50 @@
 
 <h2>Create</h2>
 
+@if (ViewBag.Msg != null)
+{
+    <h4 style="color: green">@ViewBag.Msg</h4>
+
+}
 
     <div class="form-horizontal">
         <h4>EnrollCourse</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            <p class="control-label col-md-2">Student Reg.No</p>
+            <div class="col-md-2"><p>Student Reg No: </p></div>
             <div class="col-md-10">
                 @Html.DropDownList("RegistrationNumber", null, htmlAttributes: new { @class = "control-label col-md-2", id = "registerId", })
             </div>
         </div>
         <div class="form-group">
-            <p class="control-label col-md-2">Stuent Name</p>
+            <div class="col-md-2"><p>Studnet Name</p></div>
             <div class="col-md-10">
-                <input type="text" id="studentName" /> 
+                <input type="text" id="studentName" readonly /> 
             </div>
         </div>
         <div class="form-group">
-            <p class="control-label col-md-2">Teaher</p>
+            <div class="col-md-2"><p>Email Address</p></div>
             <div class="col-md-10">
-                <input type="text" id="studentEmail" /> 
+                <input type="text" id="studentEmail" readonly /> 
             </div>
         </div>
         <div class="form-group">
-            <p class="control-label col-md-2">Teaher</p>
+            <div class="col-md-2"><p>Department Name</p></div>
             <div class="col-md-10">
-                <input type="text" id="studentDepartment" /> 
+                <input type="text" id="studentDepartment" readonly /> 
             </div>
         </div>
 
         <div class="form-group">
-            <p class="control-label col-md-2">Student Reg.No</p>
+            <div class="col-md-2"><p>Select Course</p></div>
             <div class="col-md-10">
                 @Html.DropDownList("CourseName", null, htmlAttributes: new { @class = "control-label col-md-2" , id= "abc" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EnrollDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2"><p>Date Time</p></div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EnrollDate, new { htmlAttributes = new { @class = "form-control", id="dd"} })
                 @Html.ValidationMessageFor(model => model.EnrollDate, "", new { @class = "text-danger" })
@@ -98,7 +103,7 @@
 
         });
 
-
+        alert("Success");
 
     }
 
