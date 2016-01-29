@@ -248,6 +248,10 @@
     <Compile Include="Migrations\201601282033524_19.Designer.cs">
       <DependentUpon>201601282033524_19.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601290500404_z20.cs" />
+    <Compile Include="Migrations\201601290500404_z20.Designer.cs">
+      <DependentUpon>201601290500404_z20.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
@@ -378,6 +382,7 @@
     <Content Include="Views\StudentResult\Create.cshtml" />
     <Content Include="Views\EnRolls\Index.cshtml" />
     <Content Include="Views\StudentResult\Index.cshtml" />
+    <Content Include="Views\Shared\_ViewResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -443,6 +448,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601282033524_19.resx">
       <DependentUpon>201601282033524_19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601290500404_z20.resx">
+      <DependentUpon>201601290500404_z20.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -251,3 +251,4 @@ C:\Users\zubayer01913\Documents\Visual Studio 2013\Projects\6\Univeristy-Managem
 C:\Users\zubayer01913\Documents\Visual Studio 2013\Projects\6\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z17.resources
 C:\Users\zubayer01913\Documents\Visual Studio 2013\Projects\6\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z18.resources
 C:\Users\zubayer01913\Documents\Visual Studio 2013\Projects\6\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations._19.resources
+C:\Users\zubayer01913\Documents\Visual Studio 2013\Projects\6\Univeristy-Management-System\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\UniversityManagementSystem.Migrations.z20.resources

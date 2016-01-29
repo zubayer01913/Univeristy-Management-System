@@ -20,6 +20,8 @@ namespace UniversityManagementSystem.Models
 
         public System.Data.Entity.DbSet<UniversityManagementSystem.ViewModels.CourseAssignToTeacher> CourseAssignToTeachers { get; set; }
 
+        public System.Data.Entity.DbSet<UniversityManagementSystem.ViewModels.ViewResult> ViewResults { get; set; }
+
     }
     
 }

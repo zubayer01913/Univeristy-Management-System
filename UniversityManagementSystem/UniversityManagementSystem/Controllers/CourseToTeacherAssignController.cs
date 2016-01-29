@@ -44,12 +44,12 @@ namespace UniversityManagementSystem.Controllers
             //           };
 
             var list = from a in db.Courses
-                       join b in db.CourseAssignToTeachers on a.Id equals b.Id
+                       join b in db.CourseAssignToTeachers on a.CourseCode equals b.CouseCode
                        select new
                        {
                            b.Id,
-                           a.CourseCode,
-                           a.Name,
+                           b.CouseCode,
+                           b.CourseName,
                            a.Semester.SemesterName,
                            b.TeacherName
                            
@@ -60,8 +60,8 @@ namespace UniversityManagementSystem.Controllers
             {
                 CourseStatic cour = new CourseStatic();
                 cour.Id = v.Id;
-                cour.CourseCode = v.CourseCode;
-                cour.Name = v.Name;
+                cour.CourseCode = v.CouseCode;
+                cour.Name = v.CourseName;
                 cour.TeacherName = v.TeacherName;
                 cour.SemesterName = v.SemesterName;
 
@@ -168,12 +168,12 @@ namespace UniversityManagementSystem.Controllers
         }
 
 
-        //public ActionResult GetRemainCreadeList(int id)
-        //{
-        //    var list = db.CourseAssignToTeachers.Where(x => x.DepartmentID == id).Select(x => new { x.Id, x.CourseCode, x.Name, x.Credit }).ToList();
+        public ActionResult GetRemainCreadeList(int id)
+        {
+            var list = db.CourseAssignToTeachers.Where(x => x.Id == id).Select(x => new { x.Id, x.RemainingCredit }).ToList();
 
-        //    return Json(list);
-        //}
+            return Json(list);
+        }
 
 
 // shehedule View
